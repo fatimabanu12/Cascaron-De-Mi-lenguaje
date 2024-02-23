@@ -1,4 +1,11 @@
-VAINILLA=1
-BOWL=2
-NL=3
-'int'=1
+PASTELES=1
+SEMI=2
+BOWL=3
+LLAVECITAA=4
+LLAVECITAB=5
+NL=6
+SP=7
+'pasteles'=1
+';'=2
+'{'=4
+'}'=5

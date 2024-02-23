@@ -1,20 +1,14 @@
 grammar MiLenguaje;
 import Diccionario;
 
-start: PASTELES llavecitaa molde* llavecitab ;
+start: PASTELES LLAVECITAA NL molde LLAVECITAB;
 
 molde: 
-                declaraciones;
-                //BOWL es el id mientras que VAINILLA es mi numero entero
-declaraciones:  VAINILLA BOWL ;
+         declaraciones*;
 
+declaraciones: type BOWL SEMI NL;// DONDE BOWL ES MI ID 
 
-
-
-PASTELES:'pasteles';
-llavecitaa: '{';
-llavecitab: '}';
-
+type: 'vainilla'| 'cherry' |'fresa';
 
 
 

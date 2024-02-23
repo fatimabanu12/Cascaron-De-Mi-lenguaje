@@ -3,14 +3,13 @@
 import antlr4 from 'antlr4';
 import MiLenguajeVisitor from './MiLenguajeVisitor.js';
 
-const serializedATN = [4,1,6,30,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,
-1,0,1,0,1,0,5,0,14,8,0,10,0,12,0,17,9,0,1,0,1,0,1,1,1,1,1,2,1,2,1,2,1,3,
-1,3,1,4,1,4,1,4,0,0,5,0,2,4,6,8,0,0,25,0,10,1,0,0,0,2,20,1,0,0,0,4,22,1,
-0,0,0,6,25,1,0,0,0,8,27,1,0,0,0,10,11,5,3,0,0,11,15,3,6,3,0,12,14,3,2,1,
-0,13,12,1,0,0,0,14,17,1,0,0,0,15,13,1,0,0,0,15,16,1,0,0,0,16,18,1,0,0,0,
-17,15,1,0,0,0,18,19,3,8,4,0,19,1,1,0,0,0,20,21,3,4,2,0,21,3,1,0,0,0,22,23,
-5,4,0,0,23,24,5,5,0,0,24,5,1,0,0,0,25,26,5,1,0,0,26,7,1,0,0,0,27,28,5,2,
-0,0,28,9,1,0,0,0,1,15];
+const serializedATN = [4,1,10,28,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,1,0,1,0,
+1,0,1,0,1,0,1,0,1,1,5,1,16,8,1,10,1,12,1,19,9,1,1,2,1,2,1,2,1,2,1,2,1,3,
+1,3,1,3,0,0,4,0,2,4,6,0,1,1,0,1,3,24,0,8,1,0,0,0,2,17,1,0,0,0,4,20,1,0,0,
+0,6,25,1,0,0,0,8,9,5,4,0,0,9,10,5,7,0,0,10,11,5,9,0,0,11,12,3,2,1,0,12,13,
+5,8,0,0,13,1,1,0,0,0,14,16,3,4,2,0,15,14,1,0,0,0,16,19,1,0,0,0,17,15,1,0,
+0,0,17,18,1,0,0,0,18,3,1,0,0,0,19,17,1,0,0,0,20,21,3,6,3,0,21,22,5,6,0,0,
+22,23,5,5,0,0,23,24,5,9,0,0,24,5,1,0,0,0,25,26,7,0,0,0,26,7,1,0,0,0,1,17];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -22,11 +21,11 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class MiLenguajeParser extends antlr4.Parser {
 
     static grammarFileName = "MiLenguaje.g4";
-    static literalNames = [ null, "'{'", "'}'", "'pasteles'", "'vainilla'" ];
-    static symbolicNames = [ null, null, null, "PASTELES", "INT", "BOWL", 
-                             "NL" ];
-    static ruleNames = [ "start", "molde", "declaraciones", "llavecitaa", 
-                         "llavecitab" ];
+    static literalNames = [ null, "'vainilla'", "'cherry'", "'fresa'", "'pasteles'", 
+                            "';'", null, "'{'", "'}'" ];
+    static symbolicNames = [ null, null, null, null, "PASTELES", "SEMI", 
+                             "BOWL", "LLAVECITAA", "LLAVECITAB", "NL", "SP" ];
+    static ruleNames = [ "start", "molde", "declaraciones", "type" ];
 
     constructor(input) {
         super(input);
@@ -41,25 +40,18 @@ export default class MiLenguajeParser extends antlr4.Parser {
 	start() {
 	    let localctx = new StartContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 0, MiLenguajeParser.RULE_start);
-	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 10;
+	        this.state = 8;
 	        this.match(MiLenguajeParser.PASTELES);
+	        this.state = 9;
+	        this.match(MiLenguajeParser.LLAVECITAA);
+	        this.state = 10;
+	        this.match(MiLenguajeParser.NL);
 	        this.state = 11;
-	        this.llavecitaa();
-	        this.state = 15;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        while(_la===4) {
-	            this.state = 12;
-	            this.molde();
-	            this.state = 17;
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        }
-	        this.state = 18;
-	        this.llavecitab();
+	        this.molde();
+	        this.state = 12;
+	        this.match(MiLenguajeParser.LLAVECITAB);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -79,10 +71,19 @@ export default class MiLenguajeParser extends antlr4.Parser {
 	molde() {
 	    let localctx = new MoldeContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, MiLenguajeParser.RULE_molde);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 20;
-	        this.declaraciones();
+	        this.state = 17;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 14) !== 0)) {
+	            this.state = 14;
+	            this.declaraciones();
+	            this.state = 19;
+	            this._errHandler.sync(this);
+	            _la = this._input.LA(1);
+	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -104,10 +105,14 @@ export default class MiLenguajeParser extends antlr4.Parser {
 	    this.enterRule(localctx, 4, MiLenguajeParser.RULE_declaraciones);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 22;
-	        this.match(MiLenguajeParser.INT);
-	        this.state = 23;
+	        this.state = 20;
+	        this.type();
+	        this.state = 21;
 	        this.match(MiLenguajeParser.BOWL);
+	        this.state = 22;
+	        this.match(MiLenguajeParser.SEMI);
+	        this.state = 23;
+	        this.match(MiLenguajeParser.NL);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -124,36 +129,21 @@ export default class MiLenguajeParser extends antlr4.Parser {
 
 
 
-	llavecitaa() {
-	    let localctx = new LlavecitaaContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 6, MiLenguajeParser.RULE_llavecitaa);
+	type() {
+	    let localctx = new TypeContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 6, MiLenguajeParser.RULE_type);
+	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 25;
-	        this.match(MiLenguajeParser.T__0);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	llavecitab() {
-	    let localctx = new LlavecitabContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 8, MiLenguajeParser.RULE_llavecitab);
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 27;
-	        this.match(MiLenguajeParser.T__1);
+	        _la = this._input.LA(1);
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 14) !== 0))) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -174,16 +164,19 @@ export default class MiLenguajeParser extends antlr4.Parser {
 MiLenguajeParser.EOF = antlr4.Token.EOF;
 MiLenguajeParser.T__0 = 1;
 MiLenguajeParser.T__1 = 2;
-MiLenguajeParser.PASTELES = 3;
-MiLenguajeParser.INT = 4;
-MiLenguajeParser.BOWL = 5;
-MiLenguajeParser.NL = 6;
+MiLenguajeParser.T__2 = 3;
+MiLenguajeParser.PASTELES = 4;
+MiLenguajeParser.SEMI = 5;
+MiLenguajeParser.BOWL = 6;
+MiLenguajeParser.LLAVECITAA = 7;
+MiLenguajeParser.LLAVECITAB = 8;
+MiLenguajeParser.NL = 9;
+MiLenguajeParser.SP = 10;
 
 MiLenguajeParser.RULE_start = 0;
 MiLenguajeParser.RULE_molde = 1;
 MiLenguajeParser.RULE_declaraciones = 2;
-MiLenguajeParser.RULE_llavecitaa = 3;
-MiLenguajeParser.RULE_llavecitab = 4;
+MiLenguajeParser.RULE_type = 3;
 
 class StartContext extends antlr4.ParserRuleContext {
 
@@ -203,23 +196,20 @@ class StartContext extends antlr4.ParserRuleContext {
 	    return this.getToken(MiLenguajeParser.PASTELES, 0);
 	};
 
-	llavecitaa() {
-	    return this.getTypedRuleContext(LlavecitaaContext,0);
+	LLAVECITAA() {
+	    return this.getToken(MiLenguajeParser.LLAVECITAA, 0);
 	};
 
-	llavecitab() {
-	    return this.getTypedRuleContext(LlavecitabContext,0);
+	NL() {
+	    return this.getToken(MiLenguajeParser.NL, 0);
 	};
 
-	molde = function(i) {
-	    if(i===undefined) {
-	        i = null;
-	    }
-	    if(i===null) {
-	        return this.getTypedRuleContexts(MoldeContext);
-	    } else {
-	        return this.getTypedRuleContext(MoldeContext,i);
-	    }
+	molde() {
+	    return this.getTypedRuleContext(MoldeContext,0);
+	};
+
+	LLAVECITAB() {
+	    return this.getToken(MiLenguajeParser.LLAVECITAB, 0);
 	};
 
 	accept(visitor) {
@@ -249,8 +239,15 @@ class MoldeContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiLenguajeParser.RULE_molde;
     }
 
-	declaraciones() {
-	    return this.getTypedRuleContext(DeclaracionesContext,0);
+	declaraciones = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(DeclaracionesContext);
+	    } else {
+	        return this.getTypedRuleContext(DeclaracionesContext,i);
+	    }
 	};
 
 	accept(visitor) {
@@ -280,12 +277,20 @@ class DeclaracionesContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiLenguajeParser.RULE_declaraciones;
     }
 
-	INT() {
-	    return this.getToken(MiLenguajeParser.INT, 0);
+	type() {
+	    return this.getTypedRuleContext(TypeContext,0);
 	};
 
 	BOWL() {
 	    return this.getToken(MiLenguajeParser.BOWL, 0);
+	};
+
+	SEMI() {
+	    return this.getToken(MiLenguajeParser.SEMI, 0);
+	};
+
+	NL() {
+	    return this.getToken(MiLenguajeParser.NL, 0);
 	};
 
 	accept(visitor) {
@@ -301,7 +306,7 @@ class DeclaracionesContext extends antlr4.ParserRuleContext {
 
 
 
-class LlavecitaaContext extends antlr4.ParserRuleContext {
+class TypeContext extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
         if(parent===undefined) {
@@ -312,41 +317,13 @@ class LlavecitaaContext extends antlr4.ParserRuleContext {
         }
         super(parent, invokingState);
         this.parser = parser;
-        this.ruleIndex = MiLenguajeParser.RULE_llavecitaa;
+        this.ruleIndex = MiLenguajeParser.RULE_type;
     }
 
 
 	accept(visitor) {
 	    if ( visitor instanceof MiLenguajeVisitor ) {
-	        return visitor.visitLlavecitaa(this);
-	    } else {
-	        return visitor.visitChildren(this);
-	    }
-	}
-
-
-}
-
-
-
-class LlavecitabContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiLenguajeParser.RULE_llavecitab;
-    }
-
-
-	accept(visitor) {
-	    if ( visitor instanceof MiLenguajeVisitor ) {
-	        return visitor.visitLlavecitab(this);
+	        return visitor.visitType(this);
 	    } else {
 	        return visitor.visitChildren(this);
 	    }
@@ -361,5 +338,4 @@ class LlavecitabContext extends antlr4.ParserRuleContext {
 MiLenguajeParser.StartContext = StartContext; 
 MiLenguajeParser.MoldeContext = MoldeContext; 
 MiLenguajeParser.DeclaracionesContext = DeclaracionesContext; 
-MiLenguajeParser.LlavecitaaContext = LlavecitaaContext; 
-MiLenguajeParser.LlavecitabContext = LlavecitabContext; 
+MiLenguajeParser.TypeContext = TypeContext; 

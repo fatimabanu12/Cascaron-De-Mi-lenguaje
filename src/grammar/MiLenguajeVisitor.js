@@ -24,14 +24,8 @@ export default class MiLenguajeVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by MiLenguajeParser#llavecitaa.
-	visitLlavecitaa(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MiLenguajeParser#llavecitab.
-	visitLlavecitab(ctx) {
+	// Visit a parse tree produced by MiLenguajeParser#type.
+	visitType(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

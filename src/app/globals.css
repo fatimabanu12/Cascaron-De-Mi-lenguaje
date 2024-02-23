@@ -1,0 +1,79 @@
+  html{
+  background-color: #495867/*hacer toda la pagina de un color*/ 
+  }
+
+
+  .container-titulo{
+   width: 98%; /*ancho de mi contenedor*/
+   height: 6%;/*altura de mi contenedor*/
+    border: 5px solid #f2f3ae; /* Borde */
+    padding: 10px; /* Espaciado interior */
+    background-color: #355070;
+    margin-bottom: 5%; /*espacio que separa el contenedor con el de abajo*/
+   
+  }
+
+
+  h1{
+    color:  #ecc8af ;
+    
+  }
+ 
+    textarea{
+      
+      color: black;
+      border-radius: 10px; /*ovalado de las orillas*/ 
+      border-width: 7px; /*ancho general del borde*/
+      margin-top: 10px; /* espacio hacia abajo*/
+      margin-right: 50px; /* espacio  la derecha*/
+      padding: 30px; /*espacio interno*/
+      border-color: #691E06;
+      resize: none;  
+    }
+
+
+    textarea.numbered { /*aqui fue para hacer las lines number*/
+      background: url(http://i.imgur.com/2cOaJ.png);
+      background-attachment: local;
+      background-repeat: no-repeat;
+      padding-left: 35px;
+      padding-top: 50;
+      border-color:#e56b6f;
+      background-color: #eaac8b;
+      width: 1100px;
+      height: 150px;
+    }
+
+    .button1 {
+      padding: 10px 20px; /* primer px tamaño de alto, 2do px tamaño de lo ancho*/
+      background-color: #b56576;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: 70px; /*que tanto avanza a la derecha*/ 
+    }
+
+    .button2 {
+      padding: 10px 20px; /* primer px tamaño de alto, 2do px tamaño de lo ancho*/
+      background-color: #b56576;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-left: 1000px; /*que tanto avanza a la derecha*/ 
+    }
+
+
+    .contenedor-textotraduccion{
+      margin-left: 70px; /*espacio avanza a la derecha*/
+      color: white;
+      
+    }
+
+
+  .contenedor-resultado{
+    background-color: #eaac8b;
+    border-color: #e56b6f;
+    padding-top: 50px;
+    width: 1100px;
+      height: 125px;
+  }
