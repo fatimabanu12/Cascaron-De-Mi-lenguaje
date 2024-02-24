@@ -9,6 +9,3 @@ molde:
 declaraciones: type BOWL SEMI NL;// DONDE BOWL ES MI ID 
 
 type: 'vainilla'| 'cherry' |'fresa';
-
-
-

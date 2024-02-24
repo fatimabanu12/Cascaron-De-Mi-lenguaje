@@ -56,6 +56,8 @@ export default class CustomVisitor extends MiLenguajeVisitor {
 	  
 	}
 
+  
+
 
 	// Visit a parse tree produced by MiLenguajeParser#type.
 	visitType(ctx) {
