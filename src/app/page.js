@@ -1,5 +1,5 @@
 "use client";
-import React ,{useState}from 'react';
+import React ,{useState, useEffect}from 'react';
 import { analizar } from './module/generator.js';
 
 
@@ -8,6 +8,20 @@ import { analizar } from './module/generator.js';
 const homePage = () => {
   const[inputText,setInputText] = useState("");
   const[resultText,setResultText] = useState("");
+  const [consoleOutPut, setConsoleOutput]= useState("");
+ 
+  useEffect(()=> {
+    const originalError=console.error;
+    console.error=function(mensaje){
+      setConsoleOutput(prevOutput => prevOutput+ `${mensaje}`);
+      originalError.apply(console, arguments);
+    };
+    return () => {
+      
+      console.error = originalError;
+  };
+}, []);
+
 
   const handleInputChange = (event) => {
     setInputText(event.target.value);
@@ -45,7 +59,7 @@ const homePage = () => {
 
     </form>
     <center>
-      <textarea id="resultText" value={resultText} readOnly class="contenedor-resultado"></textarea>    
+    <div id="resultText" class="contenedor-resultado" >{resultText} {consoleOutPut}</div> 
     </center>
     </div>
   );

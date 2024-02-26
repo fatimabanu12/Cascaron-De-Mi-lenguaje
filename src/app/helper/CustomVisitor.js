@@ -38,9 +38,9 @@ export default class CustomVisitor extends MiLenguajeVisitor {
 
     if(inicioletras.test(id)){
       if(operadores.test(id)){
-        console.log(`error no debe de incluir operadores "${id}"`)
+        console.error(`ERROR: no debe de incluir operadores "${id}"`)
       }else if(this.memoria.has(id)){
-        console.log(`error el identificador"${id}" ya fue declarado`)
+        console.error(`ERROR: el identificador"${id}" ya fue declarado`)
                 
       }else{
         this.memoria.set(id, value);
@@ -49,7 +49,7 @@ export default class CustomVisitor extends MiLenguajeVisitor {
       }
 
     }else {
-      console.log('error, el identificador debe de inciar con una letra')
+      console.error('ERROR: el identificador debe de inciar con una letra')
     }
     
     return null;
