@@ -35,6 +35,7 @@ const homePage = () => {
   const handleIniciar =() => {
     setInputText("");
     setResultText("");
+    setConsoleOutput("");
   };
 
   return (
