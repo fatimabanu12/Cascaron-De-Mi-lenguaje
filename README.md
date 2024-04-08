@@ -1,6 +1,6 @@
  # **Instituto Tecnologico de Ensenada**
 
- ## **Documentacion de proyecto "FATI_PASTELITOS."**
+ ## Documentacion de proyecto "FATI_PASTELITOS."
  ## **Materia:Lenguajes y automas II.**
  ## **Maestra: Xenia Padilla.**
  ---
