@@ -18,14 +18,56 @@ export default class MiLenguajeVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
-	// Visit a parse tree produced by MiLenguajeParser#declaraciones.
-	visitDeclaraciones(ctx) {
+	// Visit a parse tree produced by MiLenguajeParser#asignacionValida.
+	visitAsignacionValida(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#asignacionInvalida.
+	visitAsignacionInvalida(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
 	// Visit a parse tree produced by MiLenguajeParser#type.
 	visitType(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#parentesis.
+	visitParentesis(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#MulImp.
+	visitMulImp(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#MultPart.
+	visitMultPart(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#AgreQuit.
+	visitAgreQuit(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#Num.
+	visitNum(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiLenguajeParser#Id.
+	visitId(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
